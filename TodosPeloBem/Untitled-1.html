@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Todos Pelo Bem</title>
+  <style>
+    :root {
+      --main-color: #006699;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.5s ease;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .category-selector {
+      text-align: center;
+      margin: 20px;
+    }
+
+    .category-selector select {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .donation-option {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .donation-option h3 {
+      margin-top: 0;
+      color: var(--main-color);
+    }
+
+    .donation-option button {
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .donation-option button:hover {
+      background-color: #004466;
+    }
+
+    .custom-donation {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .custom-donation input {
+      padding: 8px;
+      width: 100px;
+      margin-right: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #ddd;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Todos Pelo Bem</h1>
+    <p>Juntos somos mais fortes, juntos somos Sem Fronteiras</p>
+  </header>
+
+  <div class="category-selector">
+    <label for="category">Escolha uma categoria de doação:</label>
+    <select id="category" onchange="mudarCategoria()">
+      <option value="default">Selecione</option>
+      <option value="criancas">Crianças Vulneráveis</option>
+      <option value="educacao">Educação</option>
+      <option value="saude">Saúde</option>
+      <option value="meioambiente">Meio Ambiente</option>
+    </select>
+  </div>
+
+  <div class="container">
+    <div class="donation-option">
+      <h3>R$ 20 / mês</h3>
+      <p>Incentivar ciclos sociais voltados ao fortalecimento da comunidade.</p>
+      <button onclick="doar(20)">Doar</button>
+    </div>
+
+    <div class="donation-option">
+      <h3>R$ 40 / mês</h3>
+      <p>Promover ações de transformação social através de projetos de baixo custo.</p>
+      <button onclick="doar(40)">Doar</button>
+    </div>
+
+    <div class="donation-option">
+      <h3>R$ 120 / mês</h3>
+      <p>Impulsionar o alcance de projetos de engenharia em comunidades vulneráveis.</p>
+      <button onclick="doar(120)">Doar</button>
+    </div>
+
+    <div class="donation-option">
+      <h3>R$ 240 / mês</h3>
+      <p>Garantir impacto em escala nacional com projetos de engenharia e gestão.</p>
+      <button onclick="doar(240)">Doar</button>
+    </div>
+
+    <div class="custom-donation">
+      <h3>Doar outro valor</h3>
+      <input type="number" id="customValue" placeholder="R$">
+      <button onclick="doarOutro()">Doar</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      <a href="#">Sobre Nós</a> |
+      <a href="#">Contatos</a> |
+      <a href="#">Acessibilidade</a>
+    </p>
+    <p>&copy; 2025 Todos Pelo Bem</p>
+  </footer>
+
+  <script>
+    function doar(valor) {
+      alert(`Obrigado por doar R$ ${valor}, sua contribuição faz a diferença!`);
+    }
+
+    function doarOutro() {
+      const valor = document.getElementById('customValue').value;
+      if (valor && valor > 0) {
+        alert(`Obrigado por doar R$ ${valor}, sua contribuição personalizada é muito bem-vinda!`);
+      } else {
+        alert("Por favor, insira um valor válido.");
+      }
+    }
+
+    function mudarCategoria() {
+      const categoria = document.getElementById('category').value;
+      let cor;
+
+      switch (categoria) {
+        case 'criancas':
+          cor = '#FF69B4'; // rosa
+          break;
+        case 'educacao':
+          cor = '#FFD700'; // amarelo
+          break;
+        case 'saude':
+          cor = '#32CD32'; // verde
+          break;
+        case 'meioambiente':
+          cor = '#20B2AA'; // azul esverdeado
+          break;
+        default:
+          cor = '#006699'; // padrão
+      }
+
+      document.documentElement.style.setProperty('--main-color', cor);
+    }
+  </script>
+
+</body>
+</html>
+
